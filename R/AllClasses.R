@@ -18,6 +18,9 @@ setClass("FastAutoParam", contains="BiocSingularParam")
 setClass("LowRankMatrixSeed", slots=c(rotation="ANY", components="ANY"))
 
 #' @export
+setClass("ArpackParam", contains="BiocSingularParam", slots=c(args="list"))
+
+#' @export
 #' @importClassesFrom DelayedArray DelayedMatrix
 setClass("LowRankMatrix",
     contains="DelayedMatrix",

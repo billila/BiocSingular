@@ -90,3 +90,19 @@ setMethod("show", "RandomParam", function(object) {
 FastAutoParam <- function(deferred=FALSE, fold=Inf) {
     new("FastAutoParam", deferred=as.logical(deferred), fold=as.numeric(fold))
 }
+
+#' @export
+#' @importFrom methods new
+ArpackParam <- function(deferred=FALSE, fold=Inf) {
+  new("ArpackParam", deferred=as.logical(deferred), fold=as.numeric(fold))
+}
+
+#' @export
+#' @importFrom methods show 
+setMethod("show", "ArpackParam", function(object) {
+  callNextMethod()
+  extra.names <- names(bsargs(object))
+  if (length(extra.names) > 3) extra.names <- c(extra.names[seq_len(3)], "...")
+  cat(sprintf("additional arguments(%i): %s\n", length(bsargs(object)), paste(extra.names, collapse=", ")))
+})
+

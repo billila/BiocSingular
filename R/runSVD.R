@@ -39,6 +39,13 @@ setMethod("runSVD", "RandomParam", .FUN_GENERATOR(runRandomSVD,
 ))
 
 #' @export
+setMethod("runSVD", "ArpackParam", .FUN_GENERATOR(runArpackSVD, 
+                                                  function(BSPARAM) {            
+                                                    c(list(deferred=bsdeferred(BSPARAM), fold=bsfold(BSPARAM)), bsargs(BSPARAM))
+                                                  }
+))
+
+#' @export
 #' @importFrom methods is hasMethod
 #' @importClassesFrom DelayedArray DelayedMatrix
 #' @importFrom DelayedArray seed
