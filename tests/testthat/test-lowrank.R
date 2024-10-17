@@ -155,3 +155,4 @@ test_that("DelayedMatrix wrapping works", {
         expect_identical_unnamed(as.matrix(sweep(test$lrm, 2, w, "*")), sweep(test$ref, 2, w, "*"))
     }
 })
+

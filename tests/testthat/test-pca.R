@@ -65,3 +65,4 @@ test_that("runPCA handles named inputs", {
     expect_identical(rownames(out$x), rownames(y))
     expect_identical(rownames(out$rotation), colnames(y))
 })
+

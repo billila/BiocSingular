@@ -7,6 +7,10 @@ runArpackSVD <- function(x, k=min(dim(x)), nu=k, nv=k, center=FALSE, scale=FALSE
 {
   if (!is(BPPARAM, "SerialParam"))
     stop("Parallel Computation is not supported")
+  
+  if (!missing(fold))
+    stop("Fold argument is not used")
+  
   checked <- check_numbers(x, k=k, nu=nu, nv=nv)
   k <- checked$k
   nv <- checked$nv
