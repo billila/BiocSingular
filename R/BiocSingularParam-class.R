@@ -32,7 +32,8 @@ setValidity2("BiocSingularParam", function(object) {
 setMethod("show", "BiocSingularParam", function(object) {
     cat(sprintf("class: %s\n", class(object)))
     cat(sprintf("cross-product fold-threshold: %.2f\n", bsfold(object)))
-    cat(sprintf("deferred centering/scaling: %s\n", ifelse(bsdeferred(object), "on", "off")))
+    cat(sprintf("deferred centering/scaling: %s\n", 
+        ifelse(bsdeferred(object), "on", "off")))
 })
 
 #' @export
@@ -44,7 +45,8 @@ ExactParam <- function(deferred=FALSE, fold=Inf) {
 #' @export
 #' @importFrom methods new
 IrlbaParam <- function(deferred=FALSE, fold=Inf, extra.work=7, ...) {
-    new("IrlbaParam", deferred=as.logical(deferred), fold=as.numeric(fold), extra.work=as.integer(extra.work), args=list(...))
+    new("IrlbaParam", deferred=as.logical(deferred), fold=as.numeric(fold), 
+        extra.work=as.integer(extra.work), args=list(...))
 }
 
 ip_extra <- function(object) object@extra.work
@@ -67,13 +69,15 @@ setMethod("show", "IrlbaParam", function(object) {
     cat(sprintf("extra workspace: %i\n", ip_extra(object)))
     extra.names <- names(bsargs(object))
     if (length(extra.names) > 3) extra.names <- c(extra.names[seq_len(3)], "...")
-    cat(sprintf("additional arguments(%i): %s\n", length(bsargs(object)), paste(extra.names, collapse=", ")))
+    cat(sprintf("additional arguments(%i): %s\n", length(bsargs(object)), 
+        paste(extra.names, collapse=", ")))
 })
 
 #' @export
 #' @importFrom methods new
 RandomParam <- function(deferred=FALSE, fold=Inf, ...) {
-    new("RandomParam", deferred=as.logical(deferred), fold=as.numeric(fold), args=list(...))
+    new("RandomParam", deferred=as.logical(deferred), fold=as.numeric(fold), 
+        args=list(...))
 }
 
 #' @export
@@ -82,7 +86,8 @@ setMethod("show", "RandomParam", function(object) {
     callNextMethod()
     extra.names <- names(bsargs(object))
     if (length(extra.names) > 3) extra.names <- c(extra.names[seq_len(3)], "...")
-    cat(sprintf("additional arguments(%i): %s\n", length(bsargs(object)), paste(extra.names, collapse=", ")))
+    cat(sprintf("additional arguments(%i): %s\n", length(bsargs(object)), 
+        paste(extra.names, collapse=", ")))
 })
 
 #' @export
@@ -94,15 +99,16 @@ FastAutoParam <- function(deferred=FALSE, fold=Inf) {
 #' @export
 #' @importFrom methods new
 ArpackParam <- function(deferred=FALSE, fold=Inf) {
-  new("ArpackParam", deferred=as.logical(deferred), fold=as.numeric(fold))
+    new("ArpackParam", deferred=as.logical(deferred), fold=as.numeric(fold))
 }
 
 #' @export
 #' @importFrom methods show 
 setMethod("show", "ArpackParam", function(object) {
-  callNextMethod()
-  extra.names <- names(bsargs(object))
-  if (length(extra.names) > 3) extra.names <- c(extra.names[seq_len(3)], "...")
-  cat(sprintf("additional arguments(%i): %s\n", length(bsargs(object)), paste(extra.names, collapse=", ")))
+    callNextMethod()
+    extra.names <- names(bsargs(object))
+    if (length(extra.names) > 3) extra.names <- c(extra.names[seq_len(3)], "...")
+    cat(sprintf("additional arguments(%i): %s\n", length(bsargs(object)), 
+        paste(extra.names, collapse=", ")))
 })
 
